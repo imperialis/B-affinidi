@@ -28,7 +28,7 @@ jobs:
 
 # No SSH deployment steps as requested
 
-jobs:
+
   deploy:  # New job for deployment
 
     runs-on: ubuntu-latest  # Can be configured to run on a different runner if needed
