@@ -1,0 +1,35 @@
+name: CI/CD - Main Branch
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '20'  # Adjust if needed based on your project requirements
+    - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: npm install
+    - name: Run tests (if applicable)
+      run: |  # Handle the case where no tests are defined
+        echo "** No tests found in package.json **"
+    - name: Build project (assuming a simple build process)
+      run: echo "** No build script found in package.json. Skipping build step. **"  # Adjust if you have a build script
+    - name: Deploy to server (Manual steps)
+      # Since SSH access is unavailable, provide instructions on how to deploy the built code
+      run: |
+        echo "** Deployment Steps **"
+        echo "1. Download the artifact (server-app.zip) from the Actions tab."
+        echo "2. Manually transfer the downloaded artifact to your server."
+        echo "3. Extract the contents of the artifact on the server."
+        echo "4. (Optional) Create a `.env` file on the server with any required environment variables."
+        echo "5. Start your application using 'node index.js' (or your preferred method)."
+        echo "** Note: These are manual steps as SSH access is not configured. **"
